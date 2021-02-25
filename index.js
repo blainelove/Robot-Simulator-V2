@@ -32,22 +32,21 @@ document.addEventListener("DOMContentLoaded", function() {
   const moveButton = document.querySelector("button#move-button")
 
   function doMoves(){
-    const moves = movesUl.querySelectorAll('li')
-
     for(let j = 0; j < movesUl.children.length; j++ ) {
       setTimeout(function(){
         move(movesUl.children[0].innerHTML)
         movesUl.children[0].remove()
-       }, 500 * j)
-      
-      }
+      }, 500 * j)
+    }
   }
 
   moveButton.addEventListener('click', doMoves)
 
   movesUl.addEventListener('click', function(event) {
     console.log(event.target)
-    event.target.remove()
+    if (event.target.matches('li')){
+      event.target.remove()
+    }
   })
 
 });
